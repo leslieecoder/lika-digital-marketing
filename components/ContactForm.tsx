@@ -34,6 +34,9 @@ type FormState = {
   gclid: string;
 };
 
+type FieldIconType = "user" | "email" | "phone" | "building" | "service" | "budget";
+type ContactInfoIconType = "email" | "phone";
+
 const initialState: FormState = {
   name: "",
   email: "",
@@ -63,6 +66,70 @@ function getInitialState(): FormState {
     utmCampaign: searchParams.get("utm_campaign") ?? "",
     gclid: searchParams.get("gclid") ?? "",
   };
+}
+
+function FieldIcon({ type }: { type: FieldIconType }) {
+  const commonClassName = "h-4.5 w-4.5 text-[#8d87a8]";
+
+  switch (type) {
+    case "user":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-7 8a7 7 0 0 1 14 0" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+    case "email":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5Zm0 .4 8 5.6 8-5.6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+    case "phone":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M8 3.75h8A1.25 1.25 0 0 1 17.25 5v14A1.25 1.25 0 0 1 16 20.25H8A1.25 1.25 0 0 1 6.75 19V5A1.25 1.25 0 0 1 8 3.75Zm3 13.5h2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+    case "building":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M7 20V5.5A1.5 1.5 0 0 1 8.5 4h7A1.5 1.5 0 0 1 17 5.5V20M4 20h16M10 8h1m3 0h1m-5 4h1m3 0h1" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+    case "service":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M5 7h14M5 12h14M5 17h9" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+    case "budget":
+      return (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
+          <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 15.5Zm11 3.5h2.5m-7-3.5h2m-2 7h4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      );
+  }
+}
+
+function ContactInfoIcon({ type }: { type: ContactInfoIconType }) {
+  const wrapperClassName =
+    type === "email"
+      ? "bg-[linear-gradient(135deg,#ff7aa2,#ff5d7a)]"
+      : "bg-[linear-gradient(135deg,#8eb5ff,#7da3ff)]";
+
+  return (
+    <span className={`flex h-11 w-11 items-center justify-center rounded-2xl shadow-[0_10px_24px_rgba(76,45,146,0.12)] ${wrapperClassName}`}>
+      {type === "email" ? (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="none">
+          <path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5Zm0 .4 8 5.6 8-5.6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      ) : (
+        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="none">
+          <path d="M5 4.9C5 4.4 5.4 4 5.9 4H8.6C9 4 9.4 4.3 9.5 4.7L10.7 9C10.8 9.4 10.7 9.8 10.4 10.1L8.9 11.6C9.9 13.7 11.6 15.4 13.7 16.4L15.2 14.9C15.5 14.6 15.9 14.5 16.3 14.6L20.6 15.8C21 15.9 21.3 16.3 21.3 16.7V19.4C21.3 19.9 20.9 20.3 20.4 20.3H19.5C11.5 20.3 5 13.8 5 5.8V4.9Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
+        </svg>
+      )}
+    </span>
+  );
 }
 
 export function ContactForm({ contact, section, form, services, whatsapp }: ContactFormProps) {
@@ -146,70 +213,6 @@ export function ContactForm({ contact, section, form, services, whatsapp }: Cont
       ...current,
       [key]: value,
     }));
-  }
-
-  function FieldIcon({ type }: { type: "user" | "email" | "phone" | "building" | "service" | "budget" }) {
-    const commonClassName = "h-4.5 w-4.5 text-[#8d87a8]";
-
-    switch (type) {
-      case "user":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm-7 8a7 7 0 0 1 14 0" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-      case "email":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5Zm0 .4 8 5.6 8-5.6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-      case "phone":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M8 3.75h8A1.25 1.25 0 0 1 17.25 5v14A1.25 1.25 0 0 1 16 20.25H8A1.25 1.25 0 0 1 6.75 19V5A1.25 1.25 0 0 1 8 3.75Zm3 13.5h2" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-      case "building":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M7 20V5.5A1.5 1.5 0 0 1 8.5 4h7A1.5 1.5 0 0 1 17 5.5V20M4 20h16M10 8h1m3 0h1m-5 4h1m3 0h1" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-      case "service":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M5 7h14M5 12h14M5 17h9" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-      case "budget":
-        return (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className={commonClassName} fill="none">
-            <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5v7a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 15.5Zm11 3.5h2.5m-7-3.5h2m-2 7h4" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        );
-    }
-  }
-
-  function ContactInfoIcon({ type }: { type: "email" | "phone" }) {
-    const wrapperClassName =
-      type === "email"
-        ? "bg-[linear-gradient(135deg,#ff7aa2,#ff5d7a)]"
-        : "bg-[linear-gradient(135deg,#8eb5ff,#7da3ff)]";
-
-    return (
-      <span className={`flex h-11 w-11 items-center justify-center rounded-2xl shadow-[0_10px_24px_rgba(76,45,146,0.12)] ${wrapperClassName}`}>
-        {type === "email" ? (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="none">
-            <path d="M4 7.5A1.5 1.5 0 0 1 5.5 6h13A1.5 1.5 0 0 1 20 7.5v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5Zm0 .4 8 5.6 8-5.6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        ) : (
-          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 text-white" fill="none">
-            <path d="M5 4.9C5 4.4 5.4 4 5.9 4H8.6C9 4 9.4 4.3 9.5 4.7L10.7 9C10.8 9.4 10.7 9.8 10.4 10.1L8.9 11.6C9.9 13.7 11.6 15.4 13.7 16.4L15.2 14.9C15.5 14.6 15.9 14.5 16.3 14.6L20.6 15.8C21 15.9 21.3 16.3 21.3 16.7V19.4C21.3 19.9 20.9 20.3 20.4 20.3H19.5C11.5 20.3 5 13.8 5 5.8V4.9Z" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" />
-          </svg>
-        )}
-      </span>
-    );
   }
 
   return (

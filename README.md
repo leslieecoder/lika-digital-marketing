@@ -35,6 +35,28 @@ LEAD_NOTIFICATION_EMAIL=likadigitalmarketing@gmail.com
 - `LEAD_NOTIFICATION_EMAIL`: inbox that receives form notifications.
 - If `LEAD_NOTIFICATION_EMAIL` is omitted, the app falls back to the email in `config/client.ts`.
 
+### Resend setup checklist
+
+1. Create a Resend account.
+2. Verify your sending domain in Resend, for example `yourdomain.com`.
+3. Create a sender address on that domain, for example `leads@yourdomain.com`.
+4. Copy your API key from Resend.
+5. In Vercel, go to Project Settings → Environment Variables and add:
+	- `RESEND_API_KEY`
+	- `LEAD_FROM_EMAIL`
+	- `LEAD_NOTIFICATION_EMAIL`
+6. Redeploy the project after saving the variables.
+
+### Recommended Vercel values
+
+- `RESEND_API_KEY`: your Resend API key starting with `re_`
+- `LEAD_FROM_EMAIL`: sender address from your verified domain, such as `leads@yourdomain.com`
+- `LEAD_NOTIFICATION_EMAIL`: the inbox where you want to receive leads, such as your Gmail or business email
+
+### Important note
+
+The recipient can be a Gmail address, but the sender in `LEAD_FROM_EMAIL` should use a domain verified inside Resend. If these values are missing, the form still submits, but Vercel logs will show that email notifications were skipped.
+
 ## Recommended pre-deploy checklist
 
 - Set the real production domain in `config/client.ts`.
