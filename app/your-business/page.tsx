@@ -27,7 +27,7 @@ export default function YourBusinessPage() {
 
       <section className="relative overflow-hidden px-4 pb-12 pt-6 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(125,163,255,0.16),transparent_28%),radial-gradient(circle_at_85%_10%,rgba(155,109,243,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.72),rgba(248,247,255,0.96))]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-(--color-primary)/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-(--color-primary)/40 to-transparent" />
 
         <div className="relative mx-auto max-w-6xl">
           <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
@@ -100,7 +100,7 @@ export default function YourBusinessPage() {
               </div>
             </FadeIn>
 
-            <FadeIn delay={0.08} className="rounded-[var(--radius-section)] border border-(--panel-border) bg-white/84 p-4 shadow-[0_24px_90px_rgba(77,45,146,0.12)] backdrop-blur-2xl sm:p-6">
+            <FadeIn delay={0.08} className="rounded-(--radius-section) border border-(--panel-border) bg-white/84 p-4 shadow-[0_24px_90px_rgba(77,45,146,0.12)] backdrop-blur-2xl sm:p-6">
               <div className="rounded-[calc(var(--radius-section)*0.78)] border border-(--panel-border) bg-(--page-background) p-5 sm:p-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-(--heading-color)">
                   {intakePage.formTitle}
@@ -140,7 +140,7 @@ export default function YourBusinessPage() {
             </FadeIn>
           </div>
 
-          <FadeIn delay={0.14} className="mt-8 rounded-[var(--radius-section)] border border-(--panel-border) bg-[#120f2f] px-6 py-8 text-white shadow-[0_24px_90px_rgba(18,15,47,0.24)] sm:px-8 lg:px-10">
+          <FadeIn delay={0.14} className="mt-8 rounded-(--radius-section) border border-(--panel-border) bg-[#120f2f] px-6 py-8 text-white shadow-[0_24px_90px_rgba(18,15,47,0.24)] sm:px-8 lg:px-10">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/72">

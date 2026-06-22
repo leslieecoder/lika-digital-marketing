@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactElement } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,7 +19,7 @@ type PortfolioPageProps = {
 
 type SocialPlatform = "facebook" | "youtube" | "instagram" | "linkedin";
 
-const socialIcons: Record<SocialPlatform, JSX.Element> = {
+const socialIcons: Record<SocialPlatform, ReactElement> = {
   facebook: (
     <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
       <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.6 1.6-1.6H16.5V4.9c-.2 0-1-.1-2-.1-2.1 0-3.5 1.3-3.5 3.8V11H8.6v3H11v7h2.5Z" />

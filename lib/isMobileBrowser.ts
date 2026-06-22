@@ -1,9 +1,15 @@
+type NavigatorWithUserAgentData = Navigator & {
+  userAgentData?: {
+    mobile?: boolean;
+  };
+};
+
 export function isMobileBrowser() {
   if (typeof window === "undefined") {
     return false;
   }
 
-  const userAgentData = window.navigator.userAgentData;
+  const userAgentData = (window.navigator as NavigatorWithUserAgentData).userAgentData;
 
   if (typeof userAgentData?.mobile === "boolean") {
     return userAgentData.mobile;
