@@ -1,5 +1,7 @@
 import { defaultLocale, type Locale } from "@/lib/i18n";
 
+const tallyLandingPageEmbedUrl = "https://tally.so/embed/b5ABOe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1";
+
 export type PlaceholderAccent = "cyan" | "emerald" | "violet" | "amber" | "rose";
 
 export type PlaceholderImage = {
@@ -1218,7 +1220,7 @@ const baseClientConfig: ClientConfig = {
     supportTitle: "Need help before submitting?",
     supportDescription:
       "If you are missing information or want to talk through your project first, contact us directly and we can help you complete the brief.",
-    embedUrl: "https://tally.so/embed/b5ABOe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1",
+    embedUrl: tallyLandingPageEmbedUrl,
     embedTitle: "Formulario de Informacion para Crear tu Landing Page",
     embedHeight: 3768,
   },

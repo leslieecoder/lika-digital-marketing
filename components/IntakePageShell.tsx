@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
 import { ActionLink } from "@/components/ActionLink";
-import { FadeIn } from "@/components/FadeIn";
 import { LanguageSwitcher, type LanguageOption } from "@/components/LanguageSwitcher";
 import { StickyWhatsAppButton } from "@/components/StickyWhatsAppButton";
 import type { ClientConfig } from "@/config/client";
@@ -21,7 +20,7 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
     <main className="flex-1 bg-(--page-background) text-(--text-primary)">
       <Script
         src="https://tally.so/widgets/embed.js"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
       />
 
       <section className="relative overflow-hidden px-4 pb-12 pt-6 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
@@ -55,7 +54,7 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
           </div>
 
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <FadeIn className="space-y-6">
+            <div className="space-y-6">
               <div className="inline-flex rounded-full border border-(--panel-border) bg-white/75 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-(--heading-color) backdrop-blur-xl">
                 {intakePage.eyebrow}
               </div>
@@ -100,9 +99,9 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
                   ))}
                 </ul>
               </div>
-            </FadeIn>
+            </div>
 
-            <FadeIn delay={0.08} className="rounded-(--radius-section) border border-(--panel-border) bg-white/84 p-4 shadow-[0_24px_90px_rgba(77,45,146,0.12)] backdrop-blur-2xl sm:p-6">
+            <div className="rounded-(--radius-section) border border-(--panel-border) bg-white/84 p-4 shadow-[0_24px_90px_rgba(77,45,146,0.12)] backdrop-blur-2xl sm:p-6">
               <div className="rounded-[calc(var(--radius-section)*0.78)] border border-(--panel-border) bg-(--page-background) p-5 sm:p-6">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-(--heading-color)">
                   {intakePage.formTitle}
@@ -113,6 +112,7 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
 
                 <div id="project-intake" className="mt-6 overflow-hidden rounded-[calc(var(--radius-card)+0.25rem)] border border-(--panel-border) bg-white">
                   <iframe
+                    src={intakePage.embedUrl}
                     data-tally-src={intakePage.embedUrl}
                     loading="lazy"
                     width="100%"
@@ -139,10 +139,10 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
                   </p>
                 </div>
               </div>
-            </FadeIn>
+            </div>
           </div>
 
-          <FadeIn delay={0.14} className="mt-8 rounded-(--radius-section) border border-(--panel-border) bg-[#120f2f] px-6 py-8 text-white shadow-[0_24px_90px_rgba(18,15,47,0.24)] sm:px-8 lg:px-10">
+          <div className="mt-8 rounded-(--radius-section) border border-(--panel-border) bg-[#120f2f] px-6 py-8 text-white shadow-[0_24px_90px_rgba(18,15,47,0.24)] sm:px-8 lg:px-10">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-2xl">
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/72">
@@ -173,7 +173,7 @@ export function IntakePageShell({ config, languageOptions, homeHref }: IntakePag
                 </ActionLink>
               </div>
             </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
