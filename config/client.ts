@@ -1151,7 +1151,7 @@ const baseClientConfig: ClientConfig = {
     sectionButtonLabel: "Message on WhatsApp",
     desktopLabel: "Chat on WhatsApp",
     mobileLabel: "Chat on WhatsApp",
-    subLabel: "Fast replies for new project inquiries",
+    subLabel: "",
   },
   contactSection: {
     eyebrow: "",
@@ -1568,7 +1568,7 @@ const spanishClientConfig: ClientConfig = {
     sectionButtonLabel: "Enviar mensaje por WhatsApp",
     desktopLabel: "Escribir por WhatsApp",
     mobileLabel: "Escribir por WhatsApp",
-    subLabel: "Respuestas rápidas para nuevos proyectos",
+    subLabel: "",
   },
   contactSection: {
     ...baseClientConfig.contactSection,
