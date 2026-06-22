@@ -1,21 +1,25 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { PlaceholderImage } from "@/components/PlaceholderImage";
 import type { GallerySection } from "@/config/client";
+import type { Locale } from "@/lib/i18n";
+import { getLocalizedPortfolioPath } from "@/lib/i18n";
 
 type GalleryProps = {
   section: GallerySection;
+  locale: Locale;
 };
 
-export function Gallery({ section }: GalleryProps) {
-  const filters = useMemo(() => ["All", ...new Set(section.items.map((item) => item.category))], [section.items]);
-  const [activeFilter, setActiveFilter] = useState<string>("All");
+export function Gallery({ section, locale }: GalleryProps) {
+  const filters = useMemo(() => [section.allFilterLabel, ...new Set(section.items.map((item) => item.category))], [section.allFilterLabel, section.items]);
+  const [activeFilter, setActiveFilter] = useState<string>(section.allFilterLabel);
 
   const visibleItems = useMemo(
-    () => section.items.filter((item) => activeFilter === "All" || item.category === activeFilter),
-    [activeFilter, section.items],
+    () => section.items.filter((item) => activeFilter === section.allFilterLabel || item.category === activeFilter),
+    [activeFilter, section.allFilterLabel, section.items],
   );
 
   return (
@@ -55,21 +59,35 @@ export function Gallery({ section }: GalleryProps) {
 
         <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:gap-6 xl:grid-cols-3">
           {visibleItems.map((item, index) => (
-            <FadeIn key={`${item.category}-${item.title}`} delay={index * 0.05} hover className="w-full max-w-full min-w-0 space-y-4 rounded-4xl bg-[#faf7ff] p-6 shadow-[0_14px_38px_rgba(121,87,213,0.06)] md:p-8">
-              <PlaceholderImage image={item.image} variant="gallery" className="border-[#efe5ff] bg-white" />
-              <div className="space-y-2 px-1 pb-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a57d5]">{item.category}</p>
-                <p className="w-full max-w-full [word-wrap:break-word] [hyphens:auto] text-sm font-semibold uppercase tracking-[0.08em] text-(--heading-color) sm:text-[0.95rem]">
-                  {item.title}
-                </p>
-              </div>
+            <FadeIn key={`${item.category}-${item.title}`} delay={index * 0.05} hover className="w-full max-w-full min-w-0">
+              <Link
+                href={getLocalizedPortfolioPath(locale, item.slug)}
+                className="group block space-y-4 rounded-4xl bg-[#faf7ff] p-6 shadow-[0_14px_38px_rgba(121,87,213,0.06)] transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_48px_rgba(121,87,213,0.12)] md:p-8"
+              >
+                <PlaceholderImage image={item.image} variant="gallery" className="border-[#efe5ff] bg-white" />
+                <div className="space-y-3 px-1 pb-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a57d5]">{item.category}</p>
+                  <p className="w-full max-w-full [word-wrap:break-word] [hyphens:auto] text-sm font-semibold uppercase tracking-[0.08em] text-(--heading-color) sm:text-[0.95rem]">
+                    {item.title}
+                  </p>
+                  <div className="flex items-center justify-between gap-4 text-sm text-slate-500">
+                    <span>{item.client}</span>
+                    <span className="inline-flex items-center gap-2 font-semibold text-[#7a57d5] transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5">
+                      {section.viewProjectLabel}
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none">
+                        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
             </FadeIn>
           ))}
         </div>
 
         {visibleItems.length === 0 ? (
           <FadeIn className="mt-8 rounded-3xl border border-[#eee5ff] bg-[#faf7ff] px-5 py-6 text-center text-sm text-(--text-muted)">
-            No projects in this category yet.
+            {section.emptyStateLabel}
           </FadeIn>
         ) : null}
       </div>

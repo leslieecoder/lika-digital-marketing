@@ -1,3 +1,5 @@
+import { defaultLocale, type Locale } from "@/lib/i18n";
+
 export type PlaceholderAccent = "cyan" | "emerald" | "violet" | "amber" | "rose";
 
 export type PlaceholderImage = {
@@ -230,15 +232,29 @@ export type CtaSection = {
 };
 
 export type GalleryItem = {
+  slug: string;
   category: string;
   title: string;
   image: PlaceholderImage;
+  client: string;
+  duration: string;
+  year: string;
+  summary: string;
+  overviewTitle: string;
+  overview: string;
+  services: string[];
+  outcomes: string[];
+  images: PlaceholderImage[];
+  liveUrl?: string;
 };
 
 export type GallerySection = {
   eyebrow: string;
   title: string;
   description: string;
+  allFilterLabel: string;
+  viewProjectLabel: string;
+  emptyStateLabel: string;
   items: GalleryItem[];
 };
 
@@ -283,6 +299,55 @@ export type FormContent = {
   genericErrorMessage: string;
 };
 
+export type IntakePageContent = {
+  meta: {
+    title: string;
+    description: string;
+  };
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryCtaLabel: string;
+  backHomeLabel: string;
+  highlightsTitle: string;
+  highlights: string[];
+  formTitle: string;
+  formDescription: string;
+  fallbackLinkLabel: string;
+  followUpText: string;
+  supportTitle: string;
+  supportDescription: string;
+  embedUrl: string;
+  embedTitle: string;
+  embedHeight: number;
+};
+
+export type PortfolioPageContent = {
+  backToProjectsLabel: string;
+  detailLabels: {
+    category: string;
+    client: string;
+    duration: string;
+    year: string;
+  };
+  previewTabLabel: string;
+  caseStudyTabLabel: string;
+  previewSectionEyebrow: string;
+  previewSectionTitle: string;
+  previewSectionDescription: string;
+  liveAccessEyebrow: string;
+  liveAccessTitle: string;
+  liveAccessDescription: string;
+  openPreviewLabel: string;
+  projectScopeEyebrow: string;
+  projectScopeTitle: string;
+  highlightsEyebrow: string;
+  similarProjectEyebrow: string;
+  similarProjectTitle: string;
+  similarProjectDescription: string;
+  startProjectLabel: string;
+};
+
 export type FooterContent = {
   tagline: string;
   copyrightLabel: string;
@@ -317,10 +382,12 @@ export type ClientConfig = {
   header: HeaderContent;
   contactSection: ContactSection;
   form: FormContent;
+  intakePage: IntakePageContent;
+  portfolioPage: PortfolioPageContent;
   footer: FooterContent;
 };
 
-export const clientConfig: ClientConfig = {
+const baseClientConfig: ClientConfig = {
   businessName: "Lika Digital Marketing",
   industry: "Digital Marketing",
   location: "Utah",
@@ -776,10 +843,42 @@ export const clientConfig: ClientConfig = {
     title: "Solution-based digital projects",
     description:
       "A look at the kinds of branding, websites, and launch assets we create to help businesses look polished and ready to convert.",
+    allFilterLabel: "All",
+    viewProjectLabel: "View project",
+    emptyStateLabel: "No projects in this category yet.",
     items: [
       {
+        slug: "brand-product-presentation",
         category: "Branding",
         title: "Branding and product presentation",
+        client: "Glowhaus Beauty",
+        duration: "3 weeks",
+        year: "2026",
+        summary:
+          "A premium product presentation system built to make a new beauty brand look polished, consistent, and launch-ready across digital touchpoints.",
+        overviewTitle: "Background.",
+        overview:
+          "Glowhaus Beauty needed a sharper visual system before launching new product drops online. The initial materials felt disconnected across packaging, social previews, and the website, which weakened trust at the first point of contact. We developed a cleaner brand presentation direction focused on luxury cues, tighter hierarchy, and visual consistency so the brand could feel more established from the first impression.",
+        services: ["Brand identity", "Art direction", "Product presentation"],
+        outcomes: [
+          "Stronger visual consistency across launch assets",
+          "More premium first impression for new visitors",
+          "Clearer product storytelling for social and web",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web1.png",
+            label: "Glowhaus homepage presentation",
+            alt: "Glowhaus Beauty branding showcase",
+            accent: "cyan",
+          },
+          {
+            src: "/images/assets/branding.png",
+            label: "Brand identity board",
+            alt: "Glowhaus Beauty brand identity board",
+            accent: "rose",
+          },
+        ],
         image: {
           src: "/images/gallery/web1.png",
           label: "Gallery 01",
@@ -788,8 +887,38 @@ export const clientConfig: ClientConfig = {
         },
       },
       {
+        slug: "landing-page-conversion-design",
         category: "Websites",
         title: "Landing page and conversion design",
+        client: "Edup.ai",
+        duration: "2 weeks",
+        year: "2026",
+        summary:
+          "A conversion-led landing page for an AI education product, designed to explain the offer faster and move visitors toward sign-up with less friction.",
+        overviewTitle: "Background.",
+        overview:
+          "Edup.ai was building momentum around its AI-assisted math feedback experience, but its landing page was not doing enough to support that growth. The product concept was compelling, yet the interface hierarchy and visual storytelling made it harder for visitors to quickly understand the value. We redesigned the page around clarity, stronger contrast, and a more guided conversion path so the product could feel credible and easier to act on.",
+        services: ["Landing page design", "UX strategy", "Conversion structure"],
+        outcomes: [
+          "Clearer explanation of the product offer",
+          "Stronger CTA visibility across the page",
+          "More polished presentation for demos and outreach",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web2.png",
+            label: "Edup.ai preview",
+            alt: "Edup.ai landing page preview",
+            accent: "emerald",
+          },
+          {
+            src: "/images/gallery/web7.png",
+            label: "Edup.ai case study visual",
+            alt: "Edup.ai case study visual panel",
+            accent: "violet",
+          },
+        ],
+        liveUrl: "#contact-form",
         image: {
           src: "/images/gallery/web2.png",
           label: "Gallery 02",
@@ -798,8 +927,37 @@ export const clientConfig: ClientConfig = {
         },
       },
       {
+        slug: "mobile-first-app-interface",
         category: "Apps",
         title: "Mobile-first app interface",
+        client: "TaskFlow Mobile",
+        duration: "4 weeks",
+        year: "2026",
+        summary:
+          "A mobile product interface concept focused on smoother onboarding, cleaner screens, and a clearer path to first-time user activation.",
+        overviewTitle: "Background.",
+        overview:
+          "TaskFlow Mobile needed an app interface that felt easier to navigate and less overwhelming for first-time users. The original experience surfaced too much information too early, which made onboarding feel heavier than it needed to be. We simplified the visual system, tightened the core screens, and reworked the journey around faster comprehension and easier action on smaller devices.",
+        services: ["App UI design", "Onboarding UX", "Interaction design"],
+        outcomes: [
+          "Cleaner mobile navigation patterns",
+          "Better onboarding clarity for new users",
+          "A more modern, product-ready interface system",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web3.png",
+            label: "TaskFlow interface",
+            alt: "TaskFlow mobile app interface showcase",
+            accent: "violet",
+          },
+          {
+            src: "/images/assets/app-dev.png",
+            label: "App concept visual",
+            alt: "App development concept visual",
+            accent: "cyan",
+          },
+        ],
         image: {
           src: "/images/gallery/web3.png",
           label: "Gallery 03",
@@ -808,8 +966,37 @@ export const clientConfig: ClientConfig = {
         },
       },
       {
+        slug: "brand-identity-system",
         category: "Branding",
         title: "Brand identity system",
+        client: "Northline Studio",
+        duration: "3 weeks",
+        year: "2026",
+        summary:
+          "A structured visual identity system built to help a creative brand present itself more consistently across client-facing channels.",
+        overviewTitle: "Background.",
+        overview:
+          "Northline Studio had strong creative work but lacked a visual identity system that tied everything together. The brand needed a more unified way to show up across proposals, web materials, and presentation graphics. We created an identity direction with stronger typography, repeatable layout rules, and a more distinct visual language so the studio could feel more established and recognizable.",
+        services: ["Identity system", "Typography direction", "Brand toolkit"],
+        outcomes: [
+          "More consistent branding across touchpoints",
+          "A clearer visual language for client materials",
+          "Faster design execution with reusable brand rules",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web4.png",
+            label: "Northline brand system",
+            alt: "Northline Studio brand identity system showcase",
+            accent: "rose",
+          },
+          {
+            src: "/images/assets/logo-design.png",
+            label: "Identity applications",
+            alt: "Logo design and identity applications",
+            accent: "amber",
+          },
+        ],
         image: {
           src: "/images/gallery/web4.png",
           label: "Gallery 04",
@@ -818,8 +1005,37 @@ export const clientConfig: ClientConfig = {
         },
       },
       {
+        slug: "digital-campaign-visuals",
         category: "Marketing",
         title: "Digital campaign visuals",
+        client: "Vista Dental",
+        duration: "10 days",
+        year: "2026",
+        summary:
+          "A campaign visual kit created to support paid traffic, social promotions, and cleaner messaging across a local service brand.",
+        overviewTitle: "Background.",
+        overview:
+          "Vista Dental needed campaign visuals that looked more aligned with the quality of the service it was offering. Existing creative lacked consistency and did not give the campaigns enough visual strength to stand out. We created a refreshed set of digital assets with clearer messaging structure, more cohesive art direction, and reusable templates for ads and web placements.",
+        services: ["Campaign design", "Ad creative", "Messaging hierarchy"],
+        outcomes: [
+          "More cohesive visuals across paid and organic channels",
+          "Stronger ad-ready asset system for launch cycles",
+          "Cleaner visual hierarchy for promotional messaging",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web5.png",
+            label: "Vista campaign set",
+            alt: "Vista Dental digital campaign showcase",
+            accent: "amber",
+          },
+          {
+            src: "/images/assets/digital-marketing.png",
+            label: "Marketing concept visual",
+            alt: "Digital marketing concept visual",
+            accent: "emerald",
+          },
+        ],
         image: {
           src: "/images/gallery/web5.png",
           label: "Gallery 05",
@@ -828,8 +1044,37 @@ export const clientConfig: ClientConfig = {
         },
       },
       {
+        slug: "creative-strategy-planning",
         category: "Strategy",
         title: "Creative strategy and planning",
+        client: "Summit Collective",
+        duration: "2 weeks",
+        year: "2026",
+        summary:
+          "A strategy presentation package designed to align positioning, page direction, and launch priorities before full design production.",
+        overviewTitle: "Background.",
+        overview:
+          "Summit Collective needed a clearer strategic direction before investing deeper into design and development. There were too many disconnected ideas competing for attention, which made the brand feel less focused than it should have. We built a structured planning package that clarified the audience, offer hierarchy, messaging priorities, and visual direction so execution could move faster with fewer revisions.",
+        services: ["Creative strategy", "Offer positioning", "Launch planning"],
+        outcomes: [
+          "A clearer strategic direction before production",
+          "Stronger alignment across messaging and visuals",
+          "Faster decision-making during execution",
+        ],
+        images: [
+          {
+            src: "/images/gallery/web6.png",
+            label: "Strategy planning deck",
+            alt: "Creative strategy planning showcase",
+            accent: "cyan",
+          },
+          {
+            src: "/images/assets/why-choose-us.png",
+            label: "Planning support visual",
+            alt: "Creative planning support visual",
+            accent: "violet",
+          },
+        ],
         image: {
           src: "/images/gallery/web6.png",
           label: "Gallery 06",
@@ -946,6 +1191,65 @@ export const clientConfig: ClientConfig = {
       "Thanks — we’ll reach out shortly.",
     genericErrorMessage: "Something went wrong. Please try again.",
   },
+  intakePage: {
+    meta: {
+      title: "Tell Us About Your Business | Lika Digital Marketing",
+      description:
+        "Share your business details, goals, and landing page needs so Lika Digital Marketing can start planning your project.",
+    },
+    eyebrow: "Project intake",
+    title: "Tell us about your business before we start your landing page.",
+    description:
+      "Use this form to send the details we need to plan your landing page faster, align the offer, and start with the right direction from day one.",
+    primaryCtaLabel: "Open project form",
+    backHomeLabel: "Back to homepage",
+    highlightsTitle: "What to prepare",
+    highlights: [
+      "Your business name, services, and service area",
+      "The main offer or promotion you want the page to focus on",
+      "Any branding, photos, copy, or references you already have",
+      "Your goals, timeline, and preferred way for us to contact you",
+    ],
+    formTitle: "Landing page project form",
+    formDescription:
+      "The embedded Tally form collects the project details we need so we can start with a clear brief instead of chasing missing information later.",
+    fallbackLinkLabel: "Open the form in a new tab",
+    followUpText: "Lika Digital Marketing reviews each submission and follows up as soon as possible.",
+    supportTitle: "Need help before submitting?",
+    supportDescription:
+      "If you are missing information or want to talk through your project first, contact us directly and we can help you complete the brief.",
+    embedUrl: "https://tally.so/embed/b5ABOe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1",
+    embedTitle: "Formulario de Informacion para Crear tu Landing Page",
+    embedHeight: 3768,
+  },
+  portfolioPage: {
+    backToProjectsLabel: "Back to Projects",
+    detailLabels: {
+      category: "Category",
+      client: "Client",
+      duration: "Duration",
+      year: "Year",
+    },
+    previewTabLabel: "Preview",
+    caseStudyTabLabel: "Case Study",
+    previewSectionEyebrow: "Project Preview",
+    previewSectionTitle: "Visual direction and polished presentation",
+    previewSectionDescription:
+      "This view highlights the main presentation layer of the project so visitors can quickly understand the look, feel, and quality of the final work before reading the full case study.",
+    liveAccessEyebrow: "Live Access",
+    liveAccessTitle: "Open the project preview.",
+    liveAccessDescription:
+      "Use the preview link to open the live destination when one is available, or keep browsing the visuals here for a quick look at the project direction.",
+    openPreviewLabel: "Open Preview",
+    projectScopeEyebrow: "Project Scope",
+    projectScopeTitle: "What was delivered",
+    highlightsEyebrow: "Highlights",
+    similarProjectEyebrow: "Need something similar?",
+    similarProjectTitle: "Let's build your next project.",
+    similarProjectDescription:
+      "We design landing pages, branding systems, and digital experiences that make businesses look more credible and convert better.",
+    startProjectLabel: "Start Your Project",
+  },
   footer: {
     tagline: "Websites, branding, and digital design support for businesses that want a stronger online presence.",
     copyrightLabel: "© 2026 Lika Digital Marketing. All rights reserved.",
@@ -975,9 +1279,415 @@ export const clientConfig: ClientConfig = {
   },
 };
 
+const spanishClientConfig: ClientConfig = {
+  ...baseClientConfig,
+  meta: {
+    title: "Lika Digital Marketing | Sitios web creados para fortalecer tu presencia online",
+    description:
+      "Lika Digital Marketing crea sitios web enfocados en conversiones para negocios que quieren una presencia online más fuerte, más confianza y más consultas de clientes.",
+  },
+  header: {
+    ...baseClientConfig.header,
+    navItems: [
+      {
+        label: "Servicios",
+        href: "#services",
+      },
+      {
+        label: "Proceso",
+        href: "#benefits",
+      },
+      {
+        label: "Proyectos",
+        href: "#gallery",
+      },
+      {
+        label: "Contacto",
+        href: "#contact-form",
+      },
+    ],
+    ctaLabel: "Agenda una llamada",
+  },
+  hero: {
+    ...baseClientConfig.hero,
+    title: "Construye una presencia online que atraiga más clientes.",
+    description:
+      "Lika Digital Marketing crea sitios web para negocios que quieren verse profesionales, generar confianza rápido y convertir más visitas en llamadas, reservas y contactos.",
+    secondaryLink: {
+      label: "Sitio web demo gratis",
+      href: "#contact-form",
+    },
+    formCard: baseClientConfig.hero.formCard
+      ? {
+          ...baseClientConfig.hero.formCard,
+          title: "Agenda tu llamada estratégica gratis",
+          namePlaceholder: "Tu nombre",
+          emailPlaceholder: "Tu correo",
+          phonePlaceholder: "Tu número de teléfono",
+          selectPlaceholder: "Selecciona tu ciudad",
+          options: [
+            "Salt Lake City",
+            "West Valley City",
+            "Sandy",
+            "Draper",
+            "Murray",
+            "South Jordan",
+            "Lehi",
+            "Provo",
+            "Ogden",
+            "Remoto / Otro",
+          ],
+          submitLabel: "Agendar mi llamada",
+          submittingLabel: "Enviando...",
+          successMessage: "Gracias. Te escribiré pronto para agendar tu llamada estratégica gratuita.",
+          genericErrorMessage: "Algo salió mal. Inténtalo de nuevo.",
+          helperText: "Llamada gratis • Sin presión • Respuesta rápida",
+        }
+      : undefined,
+  },
+  trust: {
+    ...baseClientConfig.trust,
+    title: "Cómo funciona",
+    items: [
+      {
+        ...baseClientConfig.trust.items[0],
+        title: "Agenda tu llamada estratégica gratis",
+        description:
+          "Hablamos de tu negocio, tus objetivos y lo que tu sitio web necesita hacer mejor.",
+      },
+      {
+        ...baseClientConfig.trust.items[1],
+        title: "Creamos tu estrategia",
+        description:
+          "Recibes un plan claro para un sitio web que mejora tu presencia online y te ayuda a generar más prospectos.",
+      },
+      {
+        ...baseClientConfig.trust.items[2],
+        title: "Diseñamos, desarrollamos y lanzamos",
+        description:
+          "Nos encargamos del diseño, desarrollo y lanzamiento para que tengas un sitio listo para atraer y convertir clientes.",
+      },
+    ],
+    cardsTitle: "Por qué los negocios siguen avanzando con nosotros",
+    cards: [
+      {
+        ...baseClientConfig.trust.cards[0],
+        title: "Respuesta rápida",
+        description: "Recibes comunicación clara y respuestas ágiles de principio a fin.",
+      },
+      {
+        ...baseClientConfig.trust.cards[1],
+        title: "Presencia profesional",
+        description: "Tu negocio se ve creíble, moderno y listo para clientes serios.",
+      },
+      {
+        ...baseClientConfig.trust.cards[2],
+        title: "Pensado para generar leads",
+        description: "Cada página está diseñada para ayudar a que más visitantes te contacten y reserven.",
+      },
+      {
+        ...baseClientConfig.trust.cards[3],
+        title: "Hecho por ti",
+        description: "Nos ocupamos del trabajo web para que tú sigas enfocado en operar tu negocio.",
+      },
+    ],
+  },
+  services: {
+    ...baseClientConfig.services,
+    title: "Nuestros servicios",
+    description:
+      "Desde la estrategia hasta el lanzamiento, Lika te da los servicios digitales clave para construir una presencia online más fuerte y ganar más clientes.",
+    ctaLabel: "Agenda una llamada gratis",
+    items: [
+      {
+        ...baseClientConfig.services.items[0],
+        title: "Desarrollo web",
+        description:
+          "Creamos sitios web y landing pages modernas que hacen que tu negocio se vea creíble y conviertan más visitas en clientes.",
+        bullets: ["Mejor presencia online", "Más llamadas y consultas"],
+      },
+      {
+        ...baseClientConfig.services.items[1],
+        title: "Diseño de logo",
+        description:
+          "Creamos logos que ayudan a que tu negocio se vea pulido, memorable y más confiable desde la primera impresión.",
+        bullets: ["Más reconocimiento de marca", "Imagen más profesional"],
+      },
+      {
+        ...baseClientConfig.services.items[2],
+        title: "Desarrollo de apps",
+        description:
+          "Creamos apps y herramientas web que facilitan que tus clientes interactúen con tu negocio y se mantengan conectados.",
+        bullets: ["Mejor experiencia del cliente", "Más oportunidades de crecer online"],
+      },
+      {
+        ...baseClientConfig.services.items[3],
+        title: "Identidad de marca",
+        description:
+          "Construimos una identidad visual consistente para que tu negocio se sienta establecido, claro y fácil de confiar en cada punto de contacto.",
+        bullets: ["Más confianza de los visitantes", "Presencia de marca más consistente"],
+      },
+      {
+        ...baseClientConfig.services.items[4],
+        title: "Marketing digital",
+        description:
+          "Ayudamos a que tu negocio gane visibilidad online con marketing que atrae a las personas correctas a tu sitio y convierte atención en leads.",
+        bullets: ["Más tráfico calificado", "Más reservas y clientes"],
+      },
+      {
+        ...baseClientConfig.services.items[5],
+        title: "Estrategia de marca",
+        description:
+          "Definimos el posicionamiento, mensaje y dirección visual que hacen que tu negocio se vea más claro, creíble y memorable.",
+        bullets: ["Posicionamiento más claro", "Dirección de marca más sólida"],
+      },
+    ],
+  },
+  packages: {
+    ...baseClientConfig.packages,
+    title: "Paquetes",
+    description: "Opciones claras para negocios que necesitan lanzar una página simple o una presencia digital más robusta.",
+    items: baseClientConfig.packages.items.map((item, index) => ({
+      ...item,
+      name:
+        index === 0
+          ? "Paquete Landing Page"
+          : "Paquete Sitio Web Profesional",
+      subtitle:
+        index === 0
+          ? "Ideal para una oferta clara y una landing page enfocada en conversión."
+          : "Ideal para marcas que necesitan un sitio más estratégico, pulido y con mayor conversión.",
+      features:
+        index === 0
+          ? [
+              "Landing page personalizada",
+              "Diseño responsive",
+              "Estructura enfocada en conversiones",
+              "Formulario y CTA de WhatsApp",
+              "Carga rápida y experiencia móvil",
+              "Configuración básica de analítica",
+            ]
+          : [
+              "Layout avanzado y personalizado",
+              "Alineación con identidad de marca",
+              "Llamados a la acción más fuertes",
+              "Páginas o funnels ampliados",
+              "Configuración de analítica y tracking",
+              "Revisiones prioritarias de diseño",
+            ],
+      ctaLabel: "Iniciar proyecto",
+    })),
+  },
+  whyChooseUs: {
+    ...baseClientConfig.whyChooseUs,
+    title: "Por qué trabajar con nosotros se siente simple y estratégico",
+    points: [
+      "Obtienes estrategia, diseño y lanzamiento en un solo lugar",
+      "Cada página está creada para guiar a las personas a escribir, llamar o reservar",
+      "Mantenemos el proceso claro, colaborativo y fácil de seguir",
+      "Tu marca se muestra con una presencia online más limpia y creíble",
+    ],
+    primaryCta: "Contáctanos",
+  },
+  cta: {
+    ...baseClientConfig.cta,
+    title: "¿Listo para conseguir más clientes?",
+    description:
+      "Construyamos un sitio web que fortalezca tu presencia online y convierta más visitantes en consultas reales.",
+    buttonLabel: "Agenda una llamada gratis",
+    supportingText: "Respuestas rápidas • Sin presión",
+  },
+  gallery: {
+    ...baseClientConfig.gallery,
+    title: "Proyectos digitales enfocados en soluciones",
+    description:
+      "Una muestra del tipo de branding, sitios web y activos de lanzamiento que creamos para que los negocios se vean pulidos y listos para convertir.",
+    allFilterLabel: "Todos",
+    viewProjectLabel: "Ver proyecto",
+    emptyStateLabel: "Todavía no hay proyectos en esta categoría.",
+    items: [
+      {
+        ...baseClientConfig.gallery.items[0],
+        category: "Branding",
+        title: "Branding y presentación de producto",
+        summary:
+          "Un sistema de presentación premium creado para que una nueva marca de belleza se vea pulida, consistente y lista para lanzar en sus canales digitales.",
+        overviewTitle: "Contexto.",
+        overview:
+          "Glowhaus Beauty necesitaba una dirección visual más sólida antes de lanzar nuevos productos online. Sus materiales iniciales se sentían desconectados entre empaque, redes sociales y sitio web, lo que debilitaba la confianza en el primer contacto. Desarrollamos una dirección de presentación más limpia con señales de lujo, mejor jerarquía y consistencia visual para que la marca se sintiera más establecida desde la primera impresión.",
+        services: ["Identidad de marca", "Dirección de arte", "Presentación de producto"],
+        outcomes: [
+          "Mayor consistencia visual entre activos de lanzamiento",
+          "Primera impresión más premium para nuevos visitantes",
+          "Narrativa de producto más clara en web y redes sociales",
+        ],
+      },
+      {
+        ...baseClientConfig.gallery.items[1],
+        category: "Sitios web",
+        title: "Landing page y diseño para conversiones",
+        summary:
+          "Una landing page orientada a conversión para un producto de educación con IA, diseñada para explicar la oferta más rápido y mover a los visitantes al registro con menos fricción.",
+        overviewTitle: "Contexto.",
+        overview:
+          "Edup.ai estaba ganando impulso alrededor de su experiencia de retroalimentación matemática asistida por IA, pero su landing page no apoyaba ese crecimiento lo suficiente. La idea del producto era fuerte, pero la jerarquía visual y la narrativa hacían más difícil entender rápidamente el valor. Rediseñamos la página con más claridad, mejor contraste y un recorrido de conversión más guiado para que el producto se sintiera más creíble y más fácil de accionar.",
+        services: ["Diseño de landing page", "Estrategia UX", "Estructura de conversión"],
+        outcomes: [
+          "Explicación más clara de la oferta",
+          "Mayor visibilidad de los CTA en toda la página",
+          "Presentación más pulida para demos y outreach",
+        ],
+      },
+      {
+        ...baseClientConfig.gallery.items[2],
+        category: "Apps",
+        title: "Interfaz mobile-first para app",
+        summary:
+          "Un concepto de interfaz mobile-first enfocado en un onboarding más fluido, pantallas más limpias y un camino más claro hacia la activación del usuario.",
+        overviewTitle: "Contexto.",
+        overview:
+          "TaskFlow Mobile necesitaba una interfaz que se sintiera más simple de navegar y menos abrumadora para usuarios nuevos. La experiencia original mostraba demasiada información demasiado pronto, haciendo el onboarding más pesado de lo necesario. Simplificamos el sistema visual, refinamos las pantallas clave y reestructuramos el flujo para una comprensión más rápida y una acción más fácil en dispositivos móviles.",
+        services: ["Diseño UI para app", "UX de onboarding", "Diseño de interacción"],
+        outcomes: [
+          "Patrones de navegación móvil más claros",
+          "Mejor claridad en el onboarding",
+          "Un sistema de interfaz más moderno y listo para producto",
+        ],
+      },
+    ],
+  },
+  contact: {
+    ...baseClientConfig.contact,
+    serviceArea: "Utah y proyectos remotos",
+    responseTime: "Normalmente respondemos dentro de 15 minutos",
+  },
+  whatsapp: {
+    ...baseClientConfig.whatsapp,
+    message: "Hola Lesliee, quiero ayuda para mejorar mi sitio web y mi presencia online.",
+    heroButtonLabel: "Escribir por WhatsApp",
+    sectionButtonLabel: "Enviar mensaje por WhatsApp",
+    desktopLabel: "Escribir por WhatsApp",
+    mobileLabel: "Escribir por WhatsApp",
+    subLabel: "Respuestas rápidas para nuevos proyectos",
+  },
+  contactSection: {
+    ...baseClientConfig.contactSection,
+    title: "Ponte en contacto hoy",
+    description:
+      "¿Lista para transformar la visión de tu negocio? Escríbenos para una consulta personalizada y descubre cómo impulsar tu proyecto.",
+    callLabel: "Llamar",
+    emailLabel: "Correo",
+    whatsappLabel: "WhatsApp",
+    serviceAreaLabel: "Área de servicio",
+    responseTimeLabel: "Tiempo de respuesta",
+  },
+  form: {
+    ...baseClientConfig.form,
+    nameLabel: "Nombre completo",
+    namePlaceholder: "Nombre completo",
+    emailLabel: "Correo electrónico",
+    emailPlaceholder: "Correo electrónico",
+    phoneLabel: "Número de teléfono",
+    phonePlaceholder: "Número de teléfono",
+    companyLabel: "Nombre de la empresa",
+    companyPlaceholder: "Nombre de la empresa",
+    serviceLabel: "Servicio",
+    servicePlaceholder: "Servicio",
+    budgetLabel: "Presupuesto",
+    budgetPlaceholder: "Presupuesto",
+    messageLabel: "Detalles del proyecto",
+    messagePlaceholder: "Cuéntanos sobre tu proyecto...",
+    submitLabel: "Quiero información",
+    submittingLabel: "Enviando...",
+    successMessage: "Gracias. Nos pondremos en contacto contigo pronto.",
+    genericErrorMessage: "Algo salió mal. Inténtalo de nuevo.",
+  },
+  intakePage: {
+    ...baseClientConfig.intakePage,
+    meta: {
+      title: "Cuéntanos sobre tu negocio | Lika Digital Marketing",
+      description:
+        "Comparte los detalles de tu negocio, tus objetivos y lo que necesitas para que Lika Digital Marketing pueda empezar a planear tu landing page.",
+    },
+    eyebrow: "Onboarding del proyecto",
+    title: "Cuéntanos sobre tu negocio antes de empezar tu landing page.",
+    description:
+      "Usa este formulario para enviarnos la información que necesitamos y así planear tu landing page más rápido, alinear la oferta y empezar con la dirección correcta desde el primer día.",
+    primaryCtaLabel: "Abrir formulario del proyecto",
+    backHomeLabel: "Volver al inicio",
+    highlightsTitle: "Qué preparar",
+    highlights: [
+      "El nombre de tu negocio, servicios y área de servicio",
+      "La oferta principal o promoción que quieres destacar",
+      "Branding, fotos, textos o referencias que ya tengas",
+      "Tus objetivos, tiempos y la forma en que prefieres que te contactemos",
+    ],
+    formTitle: "Formulario para tu landing page",
+    formDescription:
+      "El formulario de Tally recoge los detalles que necesitamos para empezar con un brief claro en lugar de perder tiempo pidiendo información faltante después.",
+    fallbackLinkLabel: "Abrir el formulario en una nueva pestaña",
+    followUpText: "Lika Digital Marketing revisa cada envío y da seguimiento lo antes posible.",
+    supportTitle: "¿Necesitas ayuda antes de enviarlo?",
+    supportDescription:
+      "Si aún te falta información o prefieres hablar primero sobre tu proyecto, contáctanos directamente y te ayudamos a completar el brief.",
+  },
+  portfolioPage: {
+    backToProjectsLabel: "Volver a proyectos",
+    detailLabels: {
+      category: "Categoría",
+      client: "Cliente",
+      duration: "Duración",
+      year: "Año",
+    },
+    previewTabLabel: "Vista previa",
+    caseStudyTabLabel: "Caso de estudio",
+    previewSectionEyebrow: "Vista previa del proyecto",
+    previewSectionTitle: "Dirección visual y presentación pulida",
+    previewSectionDescription:
+      "Esta vista destaca la capa principal de presentación del proyecto para que los visitantes entiendan rápidamente el look, la sensación y la calidad del trabajo final antes de leer el caso de estudio completo.",
+    liveAccessEyebrow: "Acceso en vivo",
+    liveAccessTitle: "Abre la vista previa del proyecto.",
+    liveAccessDescription:
+      "Usa el enlace de vista previa para abrir el destino en vivo cuando esté disponible, o sigue explorando las imágenes aquí para ver rápidamente la dirección del proyecto.",
+    openPreviewLabel: "Abrir vista previa",
+    projectScopeEyebrow: "Alcance del proyecto",
+    projectScopeTitle: "Qué se entregó",
+    highlightsEyebrow: "Aspectos clave",
+    similarProjectEyebrow: "¿Necesitas algo similar?",
+    similarProjectTitle: "Construyamos tu próximo proyecto.",
+    similarProjectDescription:
+      "Diseñamos landing pages, sistemas de branding y experiencias digitales que hacen que los negocios se vean más creíbles y conviertan mejor.",
+    startProjectLabel: "Inicia tu proyecto",
+  },
+  footer: {
+    ...baseClientConfig.footer,
+    tagline: "Sitios web, branding y apoyo en diseño digital para negocios que quieren una presencia online más fuerte.",
+    secondaryText: "Ayudando a negocios a verse creíbles online y convertir más visitantes en consultas.",
+  },
+};
+
+const localizedClientConfigs: Record<Locale, ClientConfig> = {
+  en: baseClientConfig,
+  es: spanishClientConfig,
+};
+
+export const clientConfig = baseClientConfig;
+
+export function getClientConfig(locale: Locale = defaultLocale) {
+  return localizedClientConfigs[locale];
+}
+
 export function getWhatsAppLink(whatsapp: Pick<WhatsAppConfig, "number" | "message">) {
   const params = new URLSearchParams({ text: whatsapp.message });
   return `https://wa.me/${whatsapp.number}?${params.toString()}`;
+}
+
+export function getGalleryProjectBySlug(locale: Locale, slug: string) {
+  return getClientConfig(locale).gallery.items.find((item) => item.slug === slug);
+}
+
+export function getGalleryProjectSlugs(locale: Locale = defaultLocale) {
+  return getClientConfig(locale).gallery.items.map((item) => item.slug);
 }
 
 function normalizeHexColor(color: string) {

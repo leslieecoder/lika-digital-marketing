@@ -6,6 +6,7 @@ import { FadeIn } from "@/components/FadeIn";
 import { FormStatusToast } from "@/components/FormStatusToast";
 import { getWhatsAppLink, type HeroContent, type WhatsAppConfig } from "@/config/client";
 import { trackEvent } from "@/lib/analytics";
+import { isMobileBrowser } from "@/lib/isMobileBrowser";
 
 type HeroProps = {
   hero: HeroContent;
@@ -70,7 +71,7 @@ export function Hero({ hero, whatsapp }: HeroProps) {
   }, [status]);
 
   useEffect(() => {
-    if (status !== "success") {
+    if (status !== "success" || !isMobileBrowser()) {
       return undefined;
     }
 
@@ -138,7 +139,9 @@ export function Hero({ hero, whatsapp }: HeroProps) {
 
   const heroInputClassName =
     "w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-base text-slate-950 outline-none transition-[border-color,box-shadow,background-color,color] duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-slate-400 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20";
-  const successMessage = `${hero.formCard.successMessage} Opening WhatsApp in a moment…`;
+  const successMessage = isMobileBrowser()
+    ? `${hero.formCard.successMessage} Opening WhatsApp in a moment…`
+    : hero.formCard.successMessage;
 
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-10 sm:px-6 md:pb-24 sm:pt-12 lg:px-8 lg:pt-16">

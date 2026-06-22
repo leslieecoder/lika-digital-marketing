@@ -2,6 +2,19 @@
 
 This is a Next.js landing page built for Vercel deployment with a config-driven content system in `config/client.ts`.
 
+## Routes
+
+The site now ships with bilingual locale routes:
+
+- English homepage: `/en`
+- Spanish homepage: `/es`
+- English intake form: `/en/start-your-project`
+- Spanish intake form: `/es/empezar-proyecto`
+
+The root path `/` redirects to `/en`.
+
+Legacy intake paths such as `/your-business`, `/your-bussiness`, and `/start-your-project` redirect to the English intake route.
+
 ## Local development
 
 ```bash

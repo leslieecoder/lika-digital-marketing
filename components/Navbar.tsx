@@ -4,10 +4,13 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ActionLink } from "@/components/ActionLink";
+import { LanguageSwitcher, type LanguageOption } from "@/components/LanguageSwitcher";
 import type { HeaderContent } from "@/config/client";
 
 type NavbarProps = {
   header: HeaderContent;
+  homeHref?: string;
+  languageOptions?: LanguageOption[];
 };
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -62,7 +65,7 @@ function ArrowIcon() {
   );
 }
 
-export function Navbar({ header }: NavbarProps) {
+export function Navbar({ header, homeHref = "#home", languageOptions = [] }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -97,7 +100,7 @@ export function Navbar({ header }: NavbarProps) {
       >
         <div className="mx-auto max-w-6xl">
           <div className="flex items-center justify-between gap-3 sm:gap-4 lg:gap-6">
-          <a href="#home" className="flex min-w-0 shrink-0 items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 lg:gap-5" onClick={() => setIsOpen(false)}>
+          <a href={homeHref} className="flex min-w-0 shrink-0 items-center gap-3 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50 lg:gap-5" onClick={() => setIsOpen(false)}>
             <div className="flex h-12 items-center justify-center overflow-hidden text-sm font-semibold sm:h-14 lg:h-16">
               {header.logo.imageSrc ? (
                 <Image
@@ -129,6 +132,7 @@ export function Navbar({ header }: NavbarProps) {
           </nav>
 
           <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
+            {languageOptions.length > 0 ? <LanguageSwitcher options={languageOptions} /> : null}
             {header.phoneDisplay && header.phoneHref ? (
               <a
                 href={header.phoneHref}
@@ -173,6 +177,7 @@ export function Navbar({ header }: NavbarProps) {
                 className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 p-3 backdrop-blur-2xl lg:hidden"
               >
                 <nav className="flex flex-col gap-2 pt-1">
+                  {languageOptions.length > 0 ? <LanguageSwitcher options={languageOptions} className="mb-2 self-start" /> : null}
                   {header.navItems.map((item) => (
                     <a
                       key={item.href}

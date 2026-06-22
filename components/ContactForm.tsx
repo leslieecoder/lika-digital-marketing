@@ -12,6 +12,7 @@ import {
   getWhatsAppLink,
 } from "@/config/client";
 import { trackEvent } from "@/lib/analytics";
+import { isMobileBrowser } from "@/lib/isMobileBrowser";
 
 type ContactFormProps = {
   contact: ContactDetails;
@@ -152,7 +153,7 @@ export function ContactForm({ contact, section, form, services, whatsapp }: Cont
   }, [status]);
 
   useEffect(() => {
-    if (status !== "success") {
+    if (status !== "success" || !isMobileBrowser()) {
       return undefined;
     }
 
@@ -168,7 +169,9 @@ export function ContactForm({ contact, section, form, services, whatsapp }: Cont
 
   const messageFieldClassName =
     "w-full rounded-[1.6rem] border border-[#ebe7f6] bg-white px-5 py-4 text-[0.98rem] text-slate-950 shadow-[0_8px_18px_rgba(76,45,146,0.06)] outline-none transition-[border-color,box-shadow,background-color,color] duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-slate-400 focus:border-violet-500 focus:ring-1 focus:ring-violet-500/20";
-  const successMessage = `${form.successMessage} Opening WhatsApp in a moment…`;
+  const successMessage = isMobileBrowser()
+    ? `${form.successMessage} Opening WhatsApp in a moment…`
+    : form.successMessage;
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
