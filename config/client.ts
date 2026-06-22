@@ -1200,7 +1200,7 @@ const baseClientConfig: ClientConfig = {
         "Share your business details, goals, and landing page needs so Lika Digital Marketing can start planning your project.",
     },
     eyebrow: "Project intake",
-    title: "Tell us about your business before we start your landing page.",
+    title: "Let's get your project started",
     description:
       "Use this form to send the details we need to plan your landing page faster, align the offer, and start with the right direction from day one.",
     primaryCtaLabel: "Open project form",
@@ -1612,7 +1612,7 @@ const spanishClientConfig: ClientConfig = {
         "Comparte los detalles de tu negocio, tus objetivos y lo que necesitas para que Lika Digital Marketing pueda empezar a planear tu landing page.",
     },
     eyebrow: "Onboarding del proyecto",
-    title: "Cuéntanos sobre tu negocio antes de empezar tu landing page.",
+    title: "Empecemos tu proyecto",
     description:
       "Usa este formulario para enviarnos la información que necesitamos y así planear tu landing page más rápido, alinear la oferta y empezar con la dirección correcta desde el primer día.",
     primaryCtaLabel: "Abrir formulario del proyecto",
