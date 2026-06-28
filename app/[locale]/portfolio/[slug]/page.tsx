@@ -78,6 +78,10 @@ function SocialIcon({ platform }: { platform: SocialPlatform }) {
   return socialIcons[platform];
 }
 
+function isGif(src: string) {
+  return /\.gif($|[?#])/i.test(src);
+}
+
 function getPreviewHref(locale: Locale, slug: string, liveUrl: string | undefined, fallbackSrc: string | undefined) {
   if (liveUrl?.startsWith("#")) {
     return `${getLocalizedHomePath(locale)}${liveUrl}`;
@@ -100,6 +104,7 @@ export default async function LocalizedPortfolioProjectPage({ params }: Portfoli
     notFound();
   }
 
+  const heroImage = project.image;
   const previewHref = getPreviewHref(locale, project.slug, project.liveUrl, project.images[0]?.src ?? project.image.src);
   const backHref = `${getLocalizedHomePath(locale)}#gallery`;
 
@@ -163,14 +168,15 @@ export default async function LocalizedPortfolioProjectPage({ params }: Portfoli
 
           <FadeIn className="mt-16 rounded-4xl border border-[#efe9ff] bg-[#f8f5ff] p-3 shadow-[0_26px_70px_rgba(87,53,164,0.12)] sm:mt-20 sm:p-4">
             <div className="relative aspect-video overflow-hidden rounded-[1.65rem] border border-black/5 bg-slate-950">
-              {project.image.src ? (
+              {heroImage.src ? (
                 <Image
-                  src={project.image.src}
-                  alt={project.image.alt}
+                  src={heroImage.src}
+                  alt={heroImage.alt}
                   fill
                   priority
                   sizes="(min-width: 1280px) 1100px, (min-width: 768px) 90vw, 100vw"
-                  className="object-cover"
+                  unoptimized={isGif(heroImage.src)}
+                  className="object-cover object-top"
                 />
               ) : null}
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,9,18,0.04),rgba(7,9,18,0.22))]" />
@@ -184,7 +190,6 @@ export default async function LocalizedPortfolioProjectPage({ params }: Portfoli
           project={project}
           previewHref={previewHref}
           content={config.portfolioPage}
-          contactHref={`${getLocalizedHomePath(locale)}#contact-form`}
         />
       </section>
 

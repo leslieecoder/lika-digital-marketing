@@ -332,22 +332,16 @@ export type PortfolioPageContent = {
     duration: string;
     year: string;
   };
-  previewTabLabel: string;
-  caseStudyTabLabel: string;
-  previewSectionEyebrow: string;
-  previewSectionTitle: string;
-  previewSectionDescription: string;
+  summaryEyebrow: string;
+  summaryTitle: string;
+  processEyebrow: string;
+  processTitle: string;
+  resultsEyebrow: string;
+  resultsTitle: string;
   liveAccessEyebrow: string;
   liveAccessTitle: string;
   liveAccessDescription: string;
   openPreviewLabel: string;
-  projectScopeEyebrow: string;
-  projectScopeTitle: string;
-  highlightsEyebrow: string;
-  similarProjectEyebrow: string;
-  similarProjectTitle: string;
-  similarProjectDescription: string;
-  startProjectLabel: string;
 };
 
 export type FooterContent = {
@@ -842,245 +836,232 @@ const baseClientConfig: ClientConfig = {
   },
   gallery: {
     eyebrow: "",
-    title: "Solution-based digital projects",
+    title: "Landing pages built for real clients",
     description:
-      "A look at the kinds of branding, websites, and launch assets we create to help businesses look polished and ready to convert.",
+      "A selection of real client websites focused on stronger first impressions, clearer messaging, and effective CTAs that move visitors toward contact.",
     allFilterLabel: "All",
     viewProjectLabel: "View project",
     emptyStateLabel: "No projects in this category yet.",
     items: [
       {
-        slug: "brand-product-presentation",
-        category: "Branding",
-        title: "Branding and product presentation",
-        client: "Glowhaus Beauty",
-        duration: "3 weeks",
+        slug: "legacy-international-child-care",
+        category: "Education",
+        title: "Legacy International Child Care landing page",
+        client: "Legacy International Child Care",
+        duration: "2 weeks",
         year: "2026",
         summary:
-          "A premium product presentation system built to make a new beauty brand look polished, consistent, and launch-ready across digital touchpoints.",
+          "A bilingual childcare landing page designed to build trust quickly, explain the program clearly, and guide parents toward high-intent inquiries with stronger CTAs.",
         overviewTitle: "Background.",
         overview:
-          "Glowhaus Beauty needed a sharper visual system before launching new product drops online. The initial materials felt disconnected across packaging, social previews, and the website, which weakened trust at the first point of contact. We developed a cleaner brand presentation direction focused on luxury cues, tighter hierarchy, and visual consistency so the brand could feel more established from the first impression.",
-        services: ["Brand identity", "Art direction", "Product presentation"],
+          "Legacy International Child Care needed a landing page that felt more polished and reassuring for families discovering the school online. The goal was to present the childcare program with more clarity, highlight trust-building information faster, and make it easier for interested parents to take the next step. I structured the page around clearer sections, warmer visuals, and direct conversion paths so the offer could feel more credible from the first visit.",
+        services: ["Landing page design", "Conversion-focused structure", "CTA optimization"],
         outcomes: [
-          "Stronger visual consistency across launch assets",
-          "More premium first impression for new visitors",
-          "Clearer product storytelling for social and web",
+          "Clearer presentation of the childcare offer",
+          "Stronger trust signals for first-time visitors",
+          "More visible inquiry and contact CTAs across the page",
         ],
         images: [
           {
-            src: "/images/gallery/web1.png",
-            label: "Glowhaus homepage presentation",
-            alt: "Glowhaus Beauty branding showcase",
+            src: "/images/portfolio/legacy-international-daycare/web-hero.png",
+            label: "Legacy website hero",
+            alt: "Legacy International Child Care website hero section",
             accent: "cyan",
           },
           {
-            src: "/images/assets/branding.png",
-            label: "Brand identity board",
-            alt: "Glowhaus Beauty brand identity board",
-            accent: "rose",
+            src: "/images/portfolio/legacy-international-daycare/legacy-international.gif",
+            label: "Legacy animated preview",
+            alt: "Animated preview of the Legacy International Child Care landing page",
+            accent: "emerald",
           },
         ],
+        liveUrl: "https://legacybilingualschoolhn.org/",
         image: {
-          src: "/images/gallery/web1.png",
-          label: "Gallery 01",
-          alt: "Branding and product presentation showcase image",
+          src: "/images/portfolio/legacy-international-daycare/legacy-international.gif",
+          label: "legacybilingualschoolhn.org",
+          alt: "Animated website mockup for Legacy International Child Care",
           accent: "cyan",
         },
       },
       {
-        slug: "landing-page-conversion-design",
-        category: "Websites",
-        title: "Landing page and conversion design",
-        client: "Edup.ai",
+        slug: "osiris-damas",
+        category: "Beauty",
+        title: "Osiris Damas makeup landing page",
+        client: "Osiris Damas",
         duration: "2 weeks",
         year: "2026",
         summary:
-          "A conversion-led landing page for an AI education product, designed to explain the offer faster and move visitors toward sign-up with less friction.",
+          "A beauty service landing page built to showcase the brand with more confidence, improve service clarity, and support bookings through stronger CTA placement.",
         overviewTitle: "Background.",
         overview:
-          "Edup.ai was building momentum around its AI-assisted math feedback experience, but its landing page was not doing enough to support that growth. The product concept was compelling, yet the interface hierarchy and visual storytelling made it harder for visitors to quickly understand the value. We redesigned the page around clarity, stronger contrast, and a more guided conversion path so the product could feel credible and easier to act on.",
-        services: ["Landing page design", "UX strategy", "Conversion structure"],
+          "Osiris Damas needed a landing page that felt more premium and made the makeup services easier to understand at a glance. The objective was to help visitors connect with the brand faster, see the offer with more clarity, and reach out with less friction. I built the page around stronger visual hierarchy, more persuasive section flow, and CTA moments that feel natural throughout the experience.",
+        services: ["Landing page design", "Service presentation", "CTA optimization"],
         outcomes: [
-          "Clearer explanation of the product offer",
-          "Stronger CTA visibility across the page",
-          "More polished presentation for demos and outreach",
+          "More polished and premium brand presentation",
+          "Clearer explanation of beauty services",
+          "Better CTA visibility for inquiry-driven traffic",
         ],
         images: [
           {
-            src: "/images/gallery/web2.png",
-            label: "Edup.ai preview",
-            alt: "Edup.ai landing page preview",
+            src: "/images/portfolio/osiris-damas/web-hero.png",
+            label: "Osiris website hero",
+            alt: "Osiris Damas landing page hero section",
             accent: "emerald",
           },
           {
-            src: "/images/gallery/web7.png",
-            label: "Edup.ai case study visual",
-            alt: "Edup.ai case study visual panel",
+            src: "/images/portfolio/osiris-damas/osiris-damas.gif",
+            label: "Osiris animated preview",
+            alt: "Animated preview of the Osiris Damas landing page",
             accent: "violet",
           },
         ],
-        liveUrl: "#contact-form",
+        liveUrl: "https://osiris-damas-makeup.netlify.app/",
         image: {
-          src: "/images/gallery/web2.png",
-          label: "Gallery 02",
-          alt: "Landing page and conversion design showcase image",
+          src: "/images/portfolio/osiris-damas/osiris-damas.gif",
+          label: "osiris-damas-makeup.netlify.app",
+          alt: "Animated website mockup for Osiris Damas",
           accent: "emerald",
         },
       },
       {
-        slug: "mobile-first-app-interface",
-        category: "Apps",
-        title: "Mobile-first app interface",
-        client: "TaskFlow Mobile",
-        duration: "4 weeks",
+        slug: "renne-ceron",
+        category: "Personal Brand",
+        title: "Renne Ceron microblading landing page",
+        client: "Renne Ceron",
+        duration: "3 weeks",
         year: "2026",
         summary:
-          "A mobile product interface concept focused on smoother onboarding, cleaner screens, and a clearer path to first-time user activation.",
+          "A personal-brand landing page for a microblading artist, created to make the before-and-after transformation more visible and turn interest into direct inquiries.",
         overviewTitle: "Background.",
         overview:
-          "TaskFlow Mobile needed an app interface that felt easier to navigate and less overwhelming for first-time users. The original experience surfaced too much information too early, which made onboarding feel heavier than it needed to be. We simplified the visual system, tightened the core screens, and reworked the journey around faster comprehension and easier action on smaller devices.",
-        services: ["App UI design", "Onboarding UX", "Interaction design"],
+          "Renne Ceron needed a landing page that highlighted the artistry of the service while keeping the path to contact simple and direct. The site had to showcase transformation work, communicate the brand with more personality, and use CTAs in a way that supported lead generation instead of distracting from the visuals. I built a cleaner one-page experience with stronger contrast, better flow, and visual proof points that support trust and action.",
+        services: ["Landing page design", "Visual storytelling", "Lead-focused CTA flow"],
         outcomes: [
-          "Cleaner mobile navigation patterns",
-          "Better onboarding clarity for new users",
-          "A more modern, product-ready interface system",
+          "Stronger visual storytelling for the personal brand",
+          "Better use of before-and-after proof",
+          "A cleaner path from interest to direct contact",
         ],
         images: [
           {
-            src: "/images/gallery/web3.png",
-            label: "TaskFlow interface",
-            alt: "TaskFlow mobile app interface showcase",
+            src: "/images/portfolio/renne-ceron/web-hero.png",
+            label: "Renne website hero",
+            alt: "Renne Ceron landing page hero section",
             accent: "violet",
           },
           {
-            src: "/images/assets/app-dev.png",
-            label: "App concept visual",
-            alt: "App development concept visual",
+            src: "/images/portfolio/renne-ceron/renne-ceron.gif",
+            label: "Renne animated preview",
+            alt: "Animated preview of the Renne Ceron landing page",
+            accent: "rose",
+          },
+          {
+            src: "/images/portfolio/renne-ceron/antes-publicidad.png",
+            label: "Before ad creative",
+            alt: "Before version of Renne Ceron promotional creative",
+            accent: "amber",
+          },
+          {
+            src: "/images/portfolio/renne-ceron/despues-publicidad.png",
+            label: "After ad creative",
+            alt: "After version of Renne Ceron promotional creative",
+            accent: "cyan",
+          },
+          {
+            src: "/images/portfolio/renne-ceron/antes-logo.png",
+            label: "Before logo",
+            alt: "Before version of Renne Ceron logo",
+            accent: "amber",
+          },
+          {
+            src: "/images/portfolio/renne-ceron/despues-logo.png",
+            label: "After logo",
+            alt: "After version of Renne Ceron logo",
             accent: "cyan",
           },
         ],
+        liveUrl: "https://renne-ceron.netlify.app/",
         image: {
-          src: "/images/gallery/web3.png",
-          label: "Gallery 03",
-          alt: "Mobile-first app interface showcase image",
+          src: "/images/portfolio/renne-ceron/renne-ceron.gif",
+          label: "renne-ceron.netlify.app",
+          alt: "Animated website mockup for Renne Ceron",
           accent: "violet",
         },
       },
       {
-        slug: "brand-identity-system",
-        category: "Branding",
-        title: "Brand identity system",
-        client: "Northline Studio",
-        duration: "3 weeks",
-        year: "2026",
-        summary:
-          "A structured visual identity system built to help a creative brand present itself more consistently across client-facing channels.",
-        overviewTitle: "Background.",
-        overview:
-          "Northline Studio had strong creative work but lacked a visual identity system that tied everything together. The brand needed a more unified way to show up across proposals, web materials, and presentation graphics. We created an identity direction with stronger typography, repeatable layout rules, and a more distinct visual language so the studio could feel more established and recognizable.",
-        services: ["Identity system", "Typography direction", "Brand toolkit"],
-        outcomes: [
-          "More consistent branding across touchpoints",
-          "A clearer visual language for client materials",
-          "Faster design execution with reusable brand rules",
-        ],
-        images: [
-          {
-            src: "/images/gallery/web4.png",
-            label: "Northline brand system",
-            alt: "Northline Studio brand identity system showcase",
-            accent: "rose",
-          },
-          {
-            src: "/images/assets/logo-design.png",
-            label: "Identity applications",
-            alt: "Logo design and identity applications",
-            accent: "amber",
-          },
-        ],
-        image: {
-          src: "/images/gallery/web4.png",
-          label: "Gallery 04",
-          alt: "Brand identity showcase image",
-          accent: "rose",
-        },
-      },
-      {
-        slug: "digital-campaign-visuals",
-        category: "Marketing",
-        title: "Digital campaign visuals",
-        client: "Vista Dental",
-        duration: "10 days",
-        year: "2026",
-        summary:
-          "A campaign visual kit created to support paid traffic, social promotions, and cleaner messaging across a local service brand.",
-        overviewTitle: "Background.",
-        overview:
-          "Vista Dental needed campaign visuals that looked more aligned with the quality of the service it was offering. Existing creative lacked consistency and did not give the campaigns enough visual strength to stand out. We created a refreshed set of digital assets with clearer messaging structure, more cohesive art direction, and reusable templates for ads and web placements.",
-        services: ["Campaign design", "Ad creative", "Messaging hierarchy"],
-        outcomes: [
-          "More cohesive visuals across paid and organic channels",
-          "Stronger ad-ready asset system for launch cycles",
-          "Cleaner visual hierarchy for promotional messaging",
-        ],
-        images: [
-          {
-            src: "/images/gallery/web5.png",
-            label: "Vista campaign set",
-            alt: "Vista Dental digital campaign showcase",
-            accent: "amber",
-          },
-          {
-            src: "/images/assets/digital-marketing.png",
-            label: "Marketing concept visual",
-            alt: "Digital marketing concept visual",
-            accent: "emerald",
-          },
-        ],
-        image: {
-          src: "/images/gallery/web5.png",
-          label: "Gallery 05",
-          alt: "Digital marketing showcase image",
-          accent: "amber",
-        },
-      },
-      {
-        slug: "creative-strategy-planning",
-        category: "Strategy",
-        title: "Creative strategy and planning",
-        client: "Summit Collective",
+        slug: "always-green",
+        category: "Landscaping",
+        title: "Always Green landscaping landing page",
+        client: "Always Green",
         duration: "2 weeks",
         year: "2026",
         summary:
-          "A strategy presentation package designed to align positioning, page direction, and launch priorities before full design production.",
+          "A landscaping landing page created to make the service offer feel more trustworthy, showcase outdoor work more clearly, and move local visitors toward direct inquiries.",
         overviewTitle: "Background.",
         overview:
-          "Summit Collective needed a clearer strategic direction before investing deeper into design and development. There were too many disconnected ideas competing for attention, which made the brand feel less focused than it should have. We built a structured planning package that clarified the audience, offer hierarchy, messaging priorities, and visual direction so execution could move faster with fewer revisions.",
-        services: ["Creative strategy", "Offer positioning", "Launch planning"],
+          "Always Green needed a landing page that made the business look more established while keeping the message simple for homeowners searching for help fast. The goal was to present the landscaping offer with clearer structure, use visuals that support trust, and make the next step obvious across the page. I shaped the experience around a cleaner hierarchy, stronger service framing, and conversion points that feel natural instead of forced.",
+        services: ["Landing page design", "Service positioning", "Lead-focused CTA flow"],
         outcomes: [
-          "A clearer strategic direction before production",
-          "Stronger alignment across messaging and visuals",
-          "Faster decision-making during execution",
+          "Clearer presentation of landscaping services",
+          "Stronger visual trust for first-time visitors",
+          "A more direct path from browsing to inquiry",
         ],
         images: [
           {
-            src: "/images/gallery/web6.png",
-            label: "Strategy planning deck",
-            alt: "Creative strategy planning showcase",
-            accent: "cyan",
+            src: "/images/portfolio/always-green/always-green-hero.png",
+            label: "Always Green website hero",
+            alt: "Always Green landing page hero section",
+            accent: "emerald",
           },
           {
-            src: "/images/assets/why-choose-us.png",
-            label: "Planning support visual",
-            alt: "Creative planning support visual",
-            accent: "violet",
+            src: "/images/portfolio/always-green/always-green-gif.gif",
+            label: "Always Green animated preview",
+            alt: "Animated preview of the Always Green landing page",
+            accent: "cyan",
           },
         ],
         image: {
-          src: "/images/gallery/web6.png",
-          label: "Gallery 06",
-          alt: "Agency visual showcase image",
+          src: "/images/portfolio/always-green/always-green-gif.gif",
+          label: "Always Green project preview",
+          alt: "Animated website mockup for Always Green",
+          accent: "emerald",
+        },
+      },
+      {
+        slug: "amazing-clean",
+        category: "Cleaning",
+        title: "Amazing Clean service landing page",
+        client: "Amazing Clean",
+        duration: "2 weeks",
+        year: "2026",
+        summary:
+          "A cleaning service landing page built to communicate reliability faster, simplify the offer, and turn attention into more contact-ready leads.",
+        overviewTitle: "Background.",
+        overview:
+          "Amazing Clean needed a landing page that felt more polished and easier to understand for people looking for cleaning help quickly. The objective was to make the service promise clearer, support credibility with a stronger visual presentation, and reduce friction around reaching out. I organized the page with a cleaner section flow, more confident messaging, and CTA placement that keeps the contact path visible throughout the experience.",
+        services: ["Landing page design", "Offer clarity", "Conversion-focused CTA structure"],
+        outcomes: [
+          "A clearer and more credible service presentation",
+          "Better visibility for key contact actions",
+          "A smoother flow from interest to inquiry",
+        ],
+        images: [
+          {
+            src: "/images/portfolio/amazing-clean/amazing-cleaning-hero.png",
+            label: "Amazing Clean website hero",
+            alt: "Amazing Clean landing page hero section",
+            accent: "cyan",
+          },
+          {
+            src: "/images/portfolio/amazing-clean/cleaning.gif",
+            label: "Amazing Clean animated preview",
+            alt: "Animated preview of the Amazing Clean landing page",
+            accent: "amber",
+          },
+        ],
+        image: {
+          src: "/images/portfolio/amazing-clean/cleaning.gif",
+          label: "Amazing Clean project preview",
+          alt: "Animated website mockup for Amazing Clean",
           accent: "cyan",
         },
       },
@@ -1232,25 +1213,17 @@ const baseClientConfig: ClientConfig = {
       duration: "Duration",
       year: "Year",
     },
-    previewTabLabel: "Preview",
-    caseStudyTabLabel: "Case Study",
-    previewSectionEyebrow: "Project Preview",
-    previewSectionTitle: "Visual direction and polished presentation",
-    previewSectionDescription:
-      "This view highlights the main presentation layer of the project so visitors can quickly understand the look, feel, and quality of the final work before reading the full case study.",
+    summaryEyebrow: "What I did",
+    summaryTitle: "A brief overview of the work",
+    processEyebrow: "How I did it",
+    processTitle: "The approach behind the landing page",
+    resultsEyebrow: "Key focus",
+    resultsTitle: "What the page was built to improve",
     liveAccessEyebrow: "Live Access",
-    liveAccessTitle: "Open the project preview.",
+    liveAccessTitle: "View the live website.",
     liveAccessDescription:
-      "Use the preview link to open the live destination when one is available, or keep browsing the visuals here for a quick look at the project direction.",
-    openPreviewLabel: "Open Preview",
-    projectScopeEyebrow: "Project Scope",
-    projectScopeTitle: "What was delivered",
-    highlightsEyebrow: "Highlights",
-    similarProjectEyebrow: "Need something similar?",
-    similarProjectTitle: "Let's build your next project.",
-    similarProjectDescription:
-      "We design landing pages, branding systems, and digital experiences that make businesses look more credible and convert better.",
-    startProjectLabel: "Start Your Project",
+      "Open the finished website to see the project live and experience the final landing page directly.",
+    openPreviewLabel: "View Live Website",
   },
   footer: {
     tagline: "Websites, branding, and digital design support for businesses that want a stronger online presence.",
@@ -1501,59 +1474,91 @@ const spanishClientConfig: ClientConfig = {
   },
   gallery: {
     ...baseClientConfig.gallery,
-    title: "Proyectos digitales enfocados en soluciones",
+    title: "Landing pages creadas para clientes reales",
     description:
-      "Una muestra del tipo de branding, sitios web y activos de lanzamiento que creamos para que los negocios se vean pulidos y listos para convertir.",
+      "Una selección de sitios web reales para clientes, enfocados en una mejor primera impresión, mensajes más claros y CTAs efectivos que mueven al visitante al contacto.",
     allFilterLabel: "Todos",
     viewProjectLabel: "Ver proyecto",
     emptyStateLabel: "Todavía no hay proyectos en esta categoría.",
     items: [
       {
         ...baseClientConfig.gallery.items[0],
-        category: "Branding",
-        title: "Branding y presentación de producto",
+        category: "Educación",
+        title: "Landing page de Legacy International Child Care",
         summary:
-          "Un sistema de presentación premium creado para que una nueva marca de belleza se vea pulida, consistente y lista para lanzar en sus canales digitales.",
+          "Una landing page bilingüe para childcare diseñada para generar confianza más rápido, explicar mejor el programa y guiar a los padres hacia consultas con CTAs más visibles.",
         overviewTitle: "Contexto.",
         overview:
-          "Glowhaus Beauty necesitaba una dirección visual más sólida antes de lanzar nuevos productos online. Sus materiales iniciales se sentían desconectados entre empaque, redes sociales y sitio web, lo que debilitaba la confianza en el primer contacto. Desarrollamos una dirección de presentación más limpia con señales de lujo, mejor jerarquía y consistencia visual para que la marca se sintiera más establecida desde la primera impresión.",
-        services: ["Identidad de marca", "Dirección de arte", "Presentación de producto"],
+          "Legacy International Child Care necesitaba una landing page que se sintiera más pulida y más confiable para las familias que descubrían la escuela online. El objetivo era presentar el programa con más claridad, destacar información que genera confianza más rápido y facilitar el siguiente paso para los padres interesados. Estructuré la página con secciones más claras, visuales más cálidos y rutas de conversión directas para que la oferta se sintiera más creíble desde la primera visita.",
+        services: ["Diseño de landing page", "Estructura enfocada en conversión", "Optimización de CTA"],
         outcomes: [
-          "Mayor consistencia visual entre activos de lanzamiento",
-          "Primera impresión más premium para nuevos visitantes",
-          "Narrativa de producto más clara en web y redes sociales",
+          "Presentación más clara de la oferta educativa",
+          "Señales de confianza más fuertes para visitantes nuevos",
+          "Mayor visibilidad de los CTA de contacto y consulta",
         ],
       },
       {
         ...baseClientConfig.gallery.items[1],
-        category: "Sitios web",
-        title: "Landing page y diseño para conversiones",
+        category: "Belleza",
+        title: "Landing page de maquillaje para Osiris Damas",
         summary:
-          "Una landing page orientada a conversión para un producto de educación con IA, diseñada para explicar la oferta más rápido y mover a los visitantes al registro con menos fricción.",
+          "Una landing page para servicios de belleza creada para mostrar la marca con más fuerza, mejorar la claridad de los servicios y apoyar reservas mediante CTAs mejor ubicados.",
         overviewTitle: "Contexto.",
         overview:
-          "Edup.ai estaba ganando impulso alrededor de su experiencia de retroalimentación matemática asistida por IA, pero su landing page no apoyaba ese crecimiento lo suficiente. La idea del producto era fuerte, pero la jerarquía visual y la narrativa hacían más difícil entender rápidamente el valor. Rediseñamos la página con más claridad, mejor contraste y un recorrido de conversión más guiado para que el producto se sintiera más creíble y más fácil de accionar.",
-        services: ["Diseño de landing page", "Estrategia UX", "Estructura de conversión"],
+          "Osiris Damas necesitaba una landing page que se sintiera más premium y que hiciera los servicios de maquillaje más fáciles de entender desde el primer vistazo. El objetivo era ayudar a que las visitantes conectaran con la marca más rápido, vieran la oferta con más claridad y pudieran escribir con menos fricción. Construí la página con una jerarquía visual más fuerte, una secuencia de secciones más persuasiva y momentos de CTA integrados de forma natural durante toda la experiencia.",
+        services: ["Diseño de landing page", "Presentación de servicios", "Optimización de CTA"],
         outcomes: [
-          "Explicación más clara de la oferta",
-          "Mayor visibilidad de los CTA en toda la página",
-          "Presentación más pulida para demos y outreach",
+          "Presentación de marca más pulida y premium",
+          "Explicación más clara de los servicios de belleza",
+          "Mejor visibilidad de CTA para tráfico orientado a consultas",
         ],
       },
       {
         ...baseClientConfig.gallery.items[2],
-        category: "Apps",
-        title: "Interfaz mobile-first para app",
+        category: "Marca personal",
+        title: "Landing page de microblading para Renne Ceron",
         summary:
-          "Un concepto de interfaz mobile-first enfocado en un onboarding más fluido, pantallas más limpias y un camino más claro hacia la activación del usuario.",
+          "Una landing page de marca personal para una artista de microblading, creada para hacer más visible la transformación visual y convertir el interés en consultas directas.",
         overviewTitle: "Contexto.",
         overview:
-          "TaskFlow Mobile necesitaba una interfaz que se sintiera más simple de navegar y menos abrumadora para usuarios nuevos. La experiencia original mostraba demasiada información demasiado pronto, haciendo el onboarding más pesado de lo necesario. Simplificamos el sistema visual, refinamos las pantallas clave y reestructuramos el flujo para una comprensión más rápida y una acción más fácil en dispositivos móviles.",
-        services: ["Diseño UI para app", "UX de onboarding", "Diseño de interacción"],
+          "Renne Ceron necesitaba una landing page que mostrara mejor la parte artística del servicio sin complicar el camino al contacto. El sitio debía destacar los resultados de transformación, comunicar la marca con más personalidad y usar CTAs de una forma que ayudara a generar leads. Construí una experiencia one-page más limpia, con mejor contraste, mejor flujo y pruebas visuales que ayudan a generar confianza y acción.",
+        services: ["Diseño de landing page", "Narrativa visual", "Flujo de CTA enfocado en leads"],
         outcomes: [
-          "Patrones de navegación móvil más claros",
-          "Mejor claridad en el onboarding",
-          "Un sistema de interfaz más moderno y listo para producto",
+          "Narrativa visual más fuerte para la marca personal",
+          "Mejor uso de pruebas visuales antes y después",
+          "Un camino más claro desde el interés hasta el contacto directo",
+        ],
+      },
+      {
+        ...baseClientConfig.gallery.items[3],
+        category: "Jardinería",
+        title: "Landing page de jardinería para Always Green",
+        summary:
+          "Una landing page de jardinería creada para presentar los servicios con más confianza, mostrar mejor el trabajo exterior y llevar al visitante local hacia consultas directas.",
+        overviewTitle: "Contexto.",
+        overview:
+          "Always Green necesitaba una landing page que hiciera ver el negocio más establecido sin complicar el mensaje para quienes buscan ayuda rápido. El objetivo era presentar la oferta de jardinería con una estructura más clara, usar visuales que reforzaran la confianza y dejar más visible el siguiente paso en toda la página. Organicé la experiencia con una jerarquía más limpia, mejor presentación de servicios y puntos de conversión naturales.",
+        services: ["Diseño de landing page", "Posicionamiento de servicios", "Flujo de CTA enfocado en leads"],
+        outcomes: [
+          "Presentación más clara de los servicios de jardinería",
+          "Mayor confianza visual para visitantes nuevos",
+          "Un camino más directo desde la visita hasta la consulta",
+        ],
+      },
+      {
+        ...baseClientConfig.gallery.items[4],
+        category: "Limpieza",
+        title: "Landing page de servicios para Amazing Clean",
+        summary:
+          "Una landing page para servicios de limpieza creada para comunicar confiabilidad más rápido, simplificar la oferta y convertir el interés en más contactos listos para consultar.",
+        overviewTitle: "Contexto.",
+        overview:
+          "Amazing Clean necesitaba una landing page más pulida y más fácil de entender para personas que buscan ayuda de limpieza sin perder tiempo. El objetivo era dejar más clara la promesa del servicio, reforzar la credibilidad con una mejor presentación visual y reducir la fricción al momento de escribir. Organicé la página con una secuencia más limpia, mensajes más seguros y CTAs visibles durante toda la experiencia.",
+        services: ["Diseño de landing page", "Claridad de oferta", "Estructura de CTA enfocada en conversión"],
+        outcomes: [
+          "Una presentación del servicio más clara y más creíble",
+          "Mejor visibilidad para acciones clave de contacto",
+          "Un flujo más simple desde el interés hasta la consulta",
         ],
       },
     ],
@@ -1641,25 +1646,17 @@ const spanishClientConfig: ClientConfig = {
       duration: "Duración",
       year: "Año",
     },
-    previewTabLabel: "Vista previa",
-    caseStudyTabLabel: "Caso de estudio",
-    previewSectionEyebrow: "Vista previa del proyecto",
-    previewSectionTitle: "Dirección visual y presentación pulida",
-    previewSectionDescription:
-      "Esta vista destaca la capa principal de presentación del proyecto para que los visitantes entiendan rápidamente el look, la sensación y la calidad del trabajo final antes de leer el caso de estudio completo.",
+    summaryEyebrow: "Qué hice",
+    summaryTitle: "Un resumen breve del proyecto",
+    processEyebrow: "Cómo lo hice",
+    processTitle: "El enfoque detrás de la landing page",
+    resultsEyebrow: "En qué me enfoqué",
+    resultsTitle: "Lo que la página buscaba mejorar",
     liveAccessEyebrow: "Acceso en vivo",
-    liveAccessTitle: "Abre la vista previa del proyecto.",
+    liveAccessTitle: "Ver el sitio web en vivo.",
     liveAccessDescription:
-      "Usa el enlace de vista previa para abrir el destino en vivo cuando esté disponible, o sigue explorando las imágenes aquí para ver rápidamente la dirección del proyecto.",
-    openPreviewLabel: "Abrir vista previa",
-    projectScopeEyebrow: "Alcance del proyecto",
-    projectScopeTitle: "Qué se entregó",
-    highlightsEyebrow: "Aspectos clave",
-    similarProjectEyebrow: "¿Necesitas algo similar?",
-    similarProjectTitle: "Construyamos tu próximo proyecto.",
-    similarProjectDescription:
-      "Diseñamos landing pages, sistemas de branding y experiencias digitales que hacen que los negocios se vean más creíbles y conviertan mejor.",
-    startProjectLabel: "Inicia tu proyecto",
+      "Abre el sitio final para ver el proyecto publicado y recorrer la landing page completa directamente.",
+    openPreviewLabel: "Ver sitio en vivo",
   },
   footer: {
     ...baseClientConfig.footer,

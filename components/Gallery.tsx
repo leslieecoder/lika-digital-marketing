@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
-import { PlaceholderImage } from "@/components/PlaceholderImage";
+import { PortfolioDeviceMockup } from "@/components/PortfolioDeviceMockup";
 import type { GallerySection } from "@/config/client";
 import type { Locale } from "@/lib/i18n";
 import { getLocalizedPortfolioPath } from "@/lib/i18n";
@@ -24,15 +24,15 @@ export function Gallery({ section, locale }: GalleryProps) {
 
   return (
     <section id="gallery" className="section-spacing scroll-mt-32 bg-white px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <FadeIn className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-7xl">
+        <FadeIn className="mx-auto max-w-4xl text-center">
           {section.eyebrow ? (
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7a57d5]">{section.eyebrow}</p>
           ) : null}
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-(--heading-color) sm:text-[2.7rem]">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-(--heading-color) sm:text-[2.9rem]">
             {section.title}
           </h2>
-          <p className="mt-4 text-base leading-7 text-(--text-muted) sm:text-lg">{section.description}</p>
+          <p className="mt-4 text-base leading-8 text-(--text-muted) sm:text-lg">{section.description}</p>
         </FadeIn>
 
         <div className="mt-8 flex gap-3 overflow-x-auto pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-10 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0">
@@ -57,21 +57,24 @@ export function Gallery({ section, locale }: GalleryProps) {
           })}
         </div>
 
-        <div className="mt-10 grid gap-5 sm:mt-12 sm:grid-cols-2 lg:gap-6 xl:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-2 lg:gap-8">
           {visibleItems.map((item, index) => (
             <FadeIn key={`${item.category}-${item.title}`} delay={index * 0.05} hover className="w-full max-w-full min-w-0">
               <Link
                 href={getLocalizedPortfolioPath(locale, item.slug)}
-                className="group block space-y-4 rounded-4xl bg-[#faf7ff] p-6 shadow-[0_14px_38px_rgba(121,87,213,0.06)] transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_48px_rgba(121,87,213,0.12)] md:p-8"
+                className="group block space-y-5 rounded-4xl bg-[#faf7ff] p-6 shadow-[0_14px_38px_rgba(121,87,213,0.06)] transition-[box-shadow,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_20px_48px_rgba(121,87,213,0.12)] md:p-8"
               >
-                <PlaceholderImage image={item.image} variant="gallery" className="border-[#efe5ff] bg-white" />
+                <PortfolioDeviceMockup
+                  image={item.image}
+                  sizes="(min-width: 1280px) 44vw, (min-width: 640px) 46vw, 100vw"
+                  aspectClassName="aspect-[16/12]"
+                />
                 <div className="space-y-3 px-1 pb-1">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7a57d5]">{item.category}</p>
                   <p className="w-full max-w-full [word-wrap:break-word] [hyphens:auto] text-sm font-semibold uppercase tracking-[0.08em] text-(--heading-color) sm:text-[0.95rem]">
                     {item.title}
                   </p>
-                  <div className="flex items-center justify-between gap-4 text-sm text-slate-500">
-                    <span>{item.client}</span>
+                  <div className="flex items-center justify-end gap-4 text-sm text-slate-500">
                     <span className="inline-flex items-center gap-2 font-semibold text-[#7a57d5] transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5">
                       {section.viewProjectLabel}
                       <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none">
