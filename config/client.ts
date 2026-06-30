@@ -6,6 +6,8 @@ export type PlaceholderAccent = "cyan" | "emerald" | "violet" | "amber" | "rose"
 
 export type PlaceholderImage = {
   src?: string;
+  videoSrc?: string;
+  posterSrc?: string;
   label: string;
   alt: string;
   accent?: PlaceholderAccent;
@@ -870,6 +872,8 @@ const baseClientConfig: ClientConfig = {
           },
           {
             src: "/images/portfolio/legacy-international-daycare/legacy-international.gif",
+            videoSrc: "/images/portfolio/legacy-international-daycare/legacy-international-preview.mp4",
+            posterSrc: "/images/portfolio/legacy-international-daycare/web-hero.png",
             label: "Legacy animated preview",
             alt: "Animated preview of the Legacy International Child Care landing page",
             accent: "emerald",
@@ -878,6 +882,8 @@ const baseClientConfig: ClientConfig = {
         liveUrl: "https://legacybilingualschoolhn.org/",
         image: {
           src: "/images/portfolio/legacy-international-daycare/legacy-international.gif",
+          videoSrc: "/images/portfolio/legacy-international-daycare/legacy-international-preview.mp4",
+          posterSrc: "/images/portfolio/legacy-international-daycare/web-hero.png",
           label: "legacybilingualschoolhn.org",
           alt: "Animated website mockup for Legacy International Child Care",
           accent: "cyan",
@@ -910,6 +916,8 @@ const baseClientConfig: ClientConfig = {
           },
           {
             src: "/images/portfolio/osiris-damas/osiris-damas.gif",
+            videoSrc: "/images/portfolio/osiris-damas/osiris-damas-preview.mp4",
+            posterSrc: "/images/portfolio/osiris-damas/web-hero.png",
             label: "Osiris animated preview",
             alt: "Animated preview of the Osiris Damas landing page",
             accent: "violet",
@@ -918,6 +926,8 @@ const baseClientConfig: ClientConfig = {
         liveUrl: "https://osiris-damas-makeup.netlify.app/",
         image: {
           src: "/images/portfolio/osiris-damas/osiris-damas.gif",
+          videoSrc: "/images/portfolio/osiris-damas/osiris-damas-preview.mp4",
+          posterSrc: "/images/portfolio/osiris-damas/web-hero.png",
           label: "osiris-damas-makeup.netlify.app",
           alt: "Animated website mockup for Osiris Damas",
           accent: "emerald",
@@ -950,6 +960,8 @@ const baseClientConfig: ClientConfig = {
           },
           {
             src: "/images/portfolio/renne-ceron/renne-ceron.gif",
+            videoSrc: "/images/portfolio/renne-ceron/renne-ceron-preview.mp4",
+            posterSrc: "/images/portfolio/renne-ceron/web-hero.png",
             label: "Renne animated preview",
             alt: "Animated preview of the Renne Ceron landing page",
             accent: "rose",
@@ -982,6 +994,8 @@ const baseClientConfig: ClientConfig = {
         liveUrl: "https://renne-ceron.netlify.app/",
         image: {
           src: "/images/portfolio/renne-ceron/renne-ceron.gif",
+          videoSrc: "/images/portfolio/renne-ceron/renne-ceron-preview.mp4",
+          posterSrc: "/images/portfolio/renne-ceron/web-hero.png",
           label: "renne-ceron.netlify.app",
           alt: "Animated website mockup for Renne Ceron",
           accent: "violet",
@@ -1014,6 +1028,8 @@ const baseClientConfig: ClientConfig = {
           },
           {
             src: "/images/portfolio/always-green/always-green-gif.gif",
+            videoSrc: "/images/portfolio/always-green/always-green-preview.mp4",
+            posterSrc: "/images/portfolio/always-green/always-green-hero.png",
             label: "Always Green animated preview",
             alt: "Animated preview of the Always Green landing page",
             accent: "cyan",
@@ -1021,6 +1037,8 @@ const baseClientConfig: ClientConfig = {
         ],
         image: {
           src: "/images/portfolio/always-green/always-green-gif.gif",
+          videoSrc: "/images/portfolio/always-green/always-green-preview.mp4",
+          posterSrc: "/images/portfolio/always-green/always-green-hero.png",
           label: "Always Green project preview",
           alt: "Animated website mockup for Always Green",
           accent: "emerald",
@@ -1053,6 +1071,8 @@ const baseClientConfig: ClientConfig = {
           },
           {
             src: "/images/portfolio/amazing-clean/cleaning.gif",
+            videoSrc: "/images/portfolio/amazing-clean/cleaning-preview.mp4",
+            posterSrc: "/images/portfolio/amazing-clean/amazing-cleaning-hero.png",
             label: "Amazing Clean animated preview",
             alt: "Animated preview of the Amazing Clean landing page",
             accent: "amber",
@@ -1060,6 +1080,8 @@ const baseClientConfig: ClientConfig = {
         ],
         image: {
           src: "/images/portfolio/amazing-clean/cleaning.gif",
+          videoSrc: "/images/portfolio/amazing-clean/cleaning-preview.mp4",
+          posterSrc: "/images/portfolio/amazing-clean/amazing-cleaning-hero.png",
           label: "Amazing Clean project preview",
           alt: "Animated website mockup for Amazing Clean",
           accent: "cyan",

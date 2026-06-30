@@ -21,7 +21,7 @@ export function PortfolioDeviceMockup({
   className = "",
   aspectClassName = "aspect-[16/10]",
 }: PortfolioDeviceMockupProps) {
-  if (!image.src) {
+  if (!image.src && !image.videoSrc) {
     return <PlaceholderImage image={image} variant="gallery" className={className} />;
   }
 
@@ -38,15 +38,29 @@ export function PortfolioDeviceMockup({
         </div>
 
         <div className={`relative overflow-hidden bg-slate-950 ${aspectClassName}`}>
-          <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            priority={priority}
-            sizes={sizes}
-            unoptimized={isGif(image.src)}
-            className="object-cover object-top"
-          />
+          {image.videoSrc ? (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload={priority ? "auto" : "metadata"}
+              poster={image.posterSrc ?? image.src}
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            >
+              <source src={image.videoSrc} type="video/mp4" />
+            </video>
+          ) : image.src ? (
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              priority={priority}
+              sizes={sizes}
+              unoptimized={isGif(image.src)}
+              className="object-cover object-top"
+            />
+          ) : null}
           <div className="absolute inset-x-0 bottom-0 h-20 bg-[linear-gradient(180deg,rgba(7,9,18,0)_0%,rgba(7,9,18,0.24)_100%)]" />
         </div>
       </div>

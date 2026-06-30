@@ -168,7 +168,19 @@ export default async function LocalizedPortfolioProjectPage({ params }: Portfoli
 
           <FadeIn className="mt-16 rounded-4xl border border-[#efe9ff] bg-[#f8f5ff] p-3 shadow-[0_26px_70px_rgba(87,53,164,0.12)] sm:mt-20 sm:p-4">
             <div className="relative aspect-video overflow-hidden rounded-[1.65rem] border border-black/5 bg-slate-950">
-              {heroImage.src ? (
+              {heroImage.videoSrc ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  poster={heroImage.posterSrc ?? heroImage.src}
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                >
+                  <source src={heroImage.videoSrc} type="video/mp4" />
+                </video>
+              ) : heroImage.src ? (
                 <Image
                   src={heroImage.src}
                   alt={heroImage.alt}
